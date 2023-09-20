@@ -7,10 +7,14 @@ const AuthLink = () => {
   // temporary
   const [isAuth, setIsAuth] = useState(false);
 
+  const [open, isOpen] = useState(false);
+
   return (
     <>
       {!isAuth ? (
-        <Link href="/login">Login</Link>
+        <Link href="/login" className={styles.link}>
+          Login
+        </Link>
       ) : (
         <>
           <Link href="/write" className={styles.link}>
@@ -18,6 +22,26 @@ const AuthLink = () => {
           </Link>
           <span className={styles.link}>Logout</span>
         </>
+      )}
+      <div className={styles.hamburger} onClick={() => isOpen(!open)}>
+        <div className={styles.line}></div>
+        <div className={styles.line}></div>
+        <div className={styles.line}></div>
+      </div>
+      {open && (
+        <div className={styles.responsiveMenu}>
+          <Link href="/">Homepage</Link>
+          <Link href="/contact">Contact</Link>
+          <Link href="/about">About</Link>
+          {!isAuth ? (
+            <Link href="/login">Login</Link>
+          ) : (
+            <>
+              <Link href="/write">Write</Link>
+              <span>Logout</span>
+            </>
+          )}
+        </div>
       )}
     </>
   );

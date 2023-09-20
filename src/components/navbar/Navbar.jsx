@@ -2,6 +2,7 @@ import styles from './navbar.module.css';
 import AuthLink from '../authLink/AuthLink';
 import Image from 'next/image';
 import Link from 'next/link';
+import ThemeToggle from '../themeToggle/ThemeToggle';
 
 const Navbar = () => {
   return (
@@ -14,6 +15,7 @@ const Navbar = () => {
       </div>
       <div className={styles.logo}>Tech Talk</div>
       <div className={styles.links}>
+        <ThemeToggle />
         <Link href="/" className={styles.link}>
           Homepage
         </Link>
@@ -23,7 +25,7 @@ const Navbar = () => {
         <Link href="/about" className={styles.link}>
           About
         </Link>
-        <AuthLink />
+        <AuthLink className={styles.link} />
       </div>
     </nav>
   );
