@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   height: 100px;
+  background-color: var(--bg);
 }
 
 .social {
@@ -17,6 +18,7 @@
   text-align: center;
   text-transform: capitalize;
   flex: 1;
+  color: var(--textColor);
 }
 
 .links {
@@ -25,4 +27,27 @@
   gap: 15px;
   font-size: 20px;
   flex: 1;
+  color: var(--textColor);
+}
+
+@media screen and (max-width: 1280px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .links {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .social {
+    display: none;
+  }
+
+  .logo {
+    text-align: left;
+    font-size: 24px;
+  }
+
 }
