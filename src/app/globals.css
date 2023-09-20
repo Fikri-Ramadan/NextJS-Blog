@@ -38,7 +38,7 @@ a {
 .container {
   min-height: 100vh;
   background-color: var(--bg);
-  color: var(--textcolor);
+  color: var(--textColor);
 }
 
 .wrapper {

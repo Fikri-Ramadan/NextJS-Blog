@@ -25,7 +25,7 @@ const Navbar = () => {
         <Link href="/about" className={styles.link}>
           About
         </Link>
-        <AuthLink />
+        <AuthLink className={styles.link} />
       </div>
     </nav>
   );
