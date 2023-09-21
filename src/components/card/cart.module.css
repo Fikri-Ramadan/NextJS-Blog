@@ -26,11 +26,13 @@
 
 .date {
   color: grey;
+  margin-right: 5px;
 }
 
 .category {
   font-weight: 500;
   color: crimson;
+  margin-left: 5px;
 }
 
 .title {
