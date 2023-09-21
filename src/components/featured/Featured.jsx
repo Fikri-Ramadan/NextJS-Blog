@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styled from './featured.module.css';
+import Link from 'next/link';
 
 const Featured = () => {
   return (
@@ -26,9 +27,9 @@ const Featured = () => {
             explicabo impedit itaque ab debitis, cumque tempore? Ipsam officiis
             assumenda aliquid repellendus molestiae.
           </div>
-					<button className={styled.postBtn}>
+					<Link href="/" className={styled.button}>
 						Read More
-					</button>
+					</Link>
         </div>
       </div>
     </div>

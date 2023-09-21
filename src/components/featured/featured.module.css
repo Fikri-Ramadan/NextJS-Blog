@@ -1,5 +1,5 @@
 .container {
-  margin-top: 25px;
+  margin-top: 24px;
 }
 
 .title {
@@ -39,9 +39,10 @@
   font-size: 24px;
 }
 
-.postBtn {
+.button {
   margin-top: 10px;
   padding: 15px 10px;
+  color: black;
   border-radius: 5px;
   border: none;
   background-color: var(--softBg);
