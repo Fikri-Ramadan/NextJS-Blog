@@ -1,0 +1,96 @@
+.container {
+}
+
+.postHeader {
+  display: flex;
+}
+
+.imageContainer {
+  flex: 1;
+  position: relative;
+  aspect-ratio: 2/1;
+}
+
+.image {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.textContainer {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--textColor);
+}
+
+.profileContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.avatarContainer {
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.avatar {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.username {
+  color: var(--softTextColor);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.date {
+  color: var(--softTextColor);
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.content {
+  display: flex;
+  gap: 30px;
+}
+
+.post {
+  flex: 5;
+  margin-top: 50px;
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu {
+  flex: 2;
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .imageContainer {
+    display: none;
+  }
+
+  .menu {
+    display: none;
+  }
+}
