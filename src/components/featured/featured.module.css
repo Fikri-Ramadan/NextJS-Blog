@@ -78,6 +78,20 @@
 
 @media screen and (max-width: 640px) {
   .title {
-    font-size: 32px;
+    font-size: 20px;
+  }
+
+  .postTitle {
+    font-size: 18px;
+  }
+
+  .postDesc {
+    font-size: 14px;
+  }
+
+  .button {
+    font-size: 12px;
+    padding: 8px 6px;
+    border-radius: 2px;
   }
 }
