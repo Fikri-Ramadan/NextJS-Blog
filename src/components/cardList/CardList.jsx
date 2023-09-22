@@ -1,4 +1,5 @@
 import Card from '../card/Card';
+import Pagination from '../pagination/Pagination';
 import styles from './cardList.module.css';
 
 const CardList = () => {
@@ -10,6 +11,7 @@ const CardList = () => {
         <Card />
         <Card />
       </div>
+      <Pagination />
     </div>
   );
 };
