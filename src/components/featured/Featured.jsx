@@ -27,9 +27,9 @@ const Featured = () => {
             explicabo impedit itaque ab debitis, cumque tempore? Ipsam officiis
             assumenda aliquid repellendus molestiae.
           </div>
-					<Link href="/" className={styled.button}>
+					<button className={styled.button}>
 						Read More
-					</Link>
+					</button>
         </div>
       </div>
     </div>

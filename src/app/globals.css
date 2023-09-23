@@ -24,7 +24,7 @@ a {
 .dark {
   --bg: #0f172a;
   --textColor: #ddd;
-  --softbg: #1f273a;
+  --softBg: #1f273a;
   --softTextColor: #a6a6a6;
 }
 
