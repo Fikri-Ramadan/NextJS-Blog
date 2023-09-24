@@ -1,11 +1,12 @@
 'use client';
+import { signOut } from 'next-auth/react';
 import styles from './authLink.module.css';
 import Link from 'next/link';
 import { useState } from 'react';
 
 const AuthLink = () => {
   // temporary
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(true);
 
   const [open, isOpen] = useState(false);
 
@@ -20,7 +21,9 @@ const AuthLink = () => {
           <Link href="/write" className={styles.link}>
             Write
           </Link>
-          <span className={styles.link}>Logout</span>
+          <span className={styles.link} onClick={signOut}>
+            Logout
+          </span>
         </>
       )}
       <div className={styles.hamburger} onClick={() => isOpen(!open)}>
