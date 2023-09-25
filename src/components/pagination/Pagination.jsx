@@ -1,10 +1,28 @@
-import styles from './pagination.module.css'
+"use client"
+import { useRouter } from 'next/navigation';
+import styles from './pagination.module.css';
 
-const Pagination = () => {
-  return <div className={styles.container}>
-    <button className={styles.button}>{"<"}</button>
-    <button className={styles.button}>{">"}</button>
-  </div>;
+const Pagination = ({ page, hasPrev, hasNext }) => {
+  const router = useRouter();
+
+  return (
+    <div className={styles.container}>
+      <button
+        className={styles.button}
+        disabled={!hasPrev}
+        onClick={() => router.push(`?page=${page - 1}`)}
+      >
+        {'<'}
+      </button>
+      <button
+        className={styles.button}
+        disabled={!hasNext}
+      onClick={() => router.push(`?page=${page + 1}`)}
+      >
+        {'>'}
+      </button>
+    </div>
+  );
 };
 
 export default Pagination;
