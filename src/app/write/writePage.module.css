@@ -30,17 +30,41 @@
   height: 500px;
 }
 
+.action {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.select {
+  width: max-content;
+  margin: 10px 0 10px 0;
+  padding: 10px 10px;
+  background-color: transparent;
+  color: #919189;
+  font-family: inherit;
+}
+
+.label {
+  cursor: pointer;
+}
+
+.fileInput {
+  display: none;
+}
+
 .add {
   position: absolute;
-  top: 0;
-  left: 56px;
+  top: 10px;
+  left: 240px;
   display: flex;
   gap: 20px;
   z-index: 99;
   background-color: var(--bg);
 }
 
-.button, .addButton {
+.button,
+.addButton {
   background-color: transparent;
   border: 1px solid var(--softTextColor);
   border-radius: 50%;

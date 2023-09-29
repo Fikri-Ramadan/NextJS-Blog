@@ -5,7 +5,7 @@ import styles from './authLink.module.css';
 import Link from 'next/link';
 
 const AuthLink = () => {
-  const [open, isOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
   const { status } = useSession();
 
@@ -29,17 +29,17 @@ const AuthLink = () => {
           </span>
         </>
       )}
-      <div className={styles.hamburger} onClick={() => isOpen(!open)}>
+      <div className={styles.hamburger} onClick={() => setOpen(!isOpen)}>
         <div className={styles.line}></div>
         <div className={styles.line}></div>
         <div className={styles.line}></div>
       </div>
-      {open && (
-        <div className={styles.responsiveMenu}>
+      {isOpen && (
+        <div className={styles.responsiveMenu} onClick={() => setOpen(!isOpen)}>
           <Link href="/">Homepage</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/about">About</Link>
-          {!isAuth ? (
+          {status === 'unauthenticated' ? (
             <Link href="/login">Login</Link>
           ) : (
             <>

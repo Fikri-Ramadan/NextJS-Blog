@@ -4,7 +4,7 @@
 }
 
 .imageContainer {
-  flex: 1;
+  flex: 2;
   position: relative;
   height: 300px;
 }
@@ -14,10 +14,11 @@
 }
 
 .textContainer {
-  flex: 1;
+  flex: 3;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  gap: 25px;
 }
 
 .detail {

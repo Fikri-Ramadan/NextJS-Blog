@@ -1,106 +1,87 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './comment.module.css';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import axios from 'axios';
+import useSWR from 'swr';
+import { useState } from 'react';
 
-const Comment = () => {
+const getComments = async (url) => {
+  try {
+    const res = await axios.get(url);
+    return res.data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const Comment = ({ postSlug }) => {
+  const { status } = useSession();
+  const [desc, setDesc] = useState('');
+
+  const { data, isLoading, mutate } = useSWR(
+    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    getComments
+  );
+
+  const submitHandler = async () => {
+    await axios.post('http://localhost:3000/api/comments', {
+      desc,
+      postSlug,
+    });
+    setDesc('');
+    mutate();
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>Comments</div>
-      <div className={styles.inputComment}>
-        <textarea
-          name="comment"
-          placeholder="write your comment..."
-          className={styles.input}
-        />
-        <button className={styles.button}>Send</button>
-      </div>
+      {status === 'authenticated' ? (
+        <div className={styles.inputComment}>
+          <textarea
+            name="comment"
+            placeholder="write your comment..."
+            className={styles.input}
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+          <button className={styles.button} onClick={submitHandler}>
+            Send
+          </button>
+        </div>
+      ) : (
+        <Link href="/login">Login to write comment</Link>
+      )}
+
       <div className={styles.comments}>
-        <div className={styles.comment}>
-          <div className={styles.userProfile}>
-            <div className={styles.imageContainer}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                width={30}
-                height={30}
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.userDetail}>
-              <div className={styles.username}>John Cena</div>
-              <div className={styles.date}>23.03.23</div>
-            </div>
-          </div>
-          <div className={styles.commentMessage}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </div>
-        </div>
-
-        <div className={styles.comment}>
-          <div className={styles.userProfile}>
-            <div className={styles.imageContainer}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                width={30}
-                height={30}
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.userDetail}>
-              <div className={styles.username}>John Cena</div>
-              <div className={styles.date}>23.03.23</div>
-            </div>
-          </div>
-          <div className={styles.commentMessage}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </div>
-        </div>
-
-        <div className={styles.comment}>
-          <div className={styles.userProfile}>
-            <div className={styles.imageContainer}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                width={30}
-                height={30}
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.userDetail}>
-              <div className={styles.username}>John Cena</div>
-              <div className={styles.date}>23.03.23</div>
-            </div>
-          </div>
-          <div className={styles.commentMessage}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Dolorem expedita
-            accusantium, officiis, magni odio tenetur consequuntur aspernatur
-            rerum pariatur veniam earum! Qui, eligendi tempore id placeat ab
-            explicabo unde! Dolorum.
-          </div>
-        </div>
-
-        <div className={styles.comment}>
-          <div className={styles.userProfile}>
-            <div className={styles.imageContainer}>
-              <Image
-                src="/p1.jpeg"
-                alt=""
-                width={30}
-                height={30}
-                className={styles.image}
-              />
-            </div>
-            <div className={styles.userDetail}>
-              <div className={styles.username}>John Cena</div>
-              <div className={styles.date}>23.03.23</div>
-            </div>
-          </div>
-          <div className={styles.commentMessage}>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </div>
-        </div>
+        {isLoading
+          ? 'loading'
+          : data?.map((item) => {
+              return (
+                <div className={styles.comment} key={item.id}>
+                  <div className={styles.userProfile}>
+                    {item?.user?.image && (
+                      <div className={styles.imageContainer}>
+                        <Image
+                          src={item.user.image}
+                          alt=""
+                          width={30}
+                          height={30}
+                          className={styles.image}
+                        />
+                      </div>
+                    )}
+                    <div className={styles.userDetail}>
+                      <div className={styles.username}>{item.user.name}</div>
+                      <div className={styles.date}>{item.createdAt}</div>
+                    </div>
+                  </div>
+                  <div className={styles.commentMessage}>{item.desc}</div>
+                </div>
+              );
+            })}
       </div>
     </div>
   );

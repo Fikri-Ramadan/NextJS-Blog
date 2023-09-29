@@ -1,26 +1,30 @@
 import Image from 'next/image';
-import styles from './cart.module.css';
+import styles from './card.module.css';
 import Link from 'next/link';
 
-const Card = ({ post, key }) => {
+const Card = ({ post }) => {
   return (
-    <div className={styles.post} key={key}>
-      <div className={styles.imageContainer}>
-        <Image src="/p1.jpeg" alt="" fill className={styles.image} />
-      </div>
+    <div className={styles.post}>
+      {post.image && (
+        <div className={styles.imageContainer}>
+          <Image src={post.image} alt="" fill className={styles.image} />
+        </div>
+      )}
       <div className={styles.textContainer}>
         <div className={styles.detail}>
-          <span className={styles.date}>11.03.23</span>
+          <span className={styles.date}>{post.createdAt.substring(0, 10)}</span>
           <span>-</span>
           <span className={styles.category}>{post.catSlug}</span>
         </div>
-        <Link href="/">
-          <h1 className={styles.title}>{post.title}</h1>
-        </Link>
+        <h1 className={styles.title}>
+          <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+        </h1>
         <p className={styles.desc}>
-          {post.desc}
+          {post.desc.length > 100
+            ? post.desc.substring(0, 100) + '...'
+            : post.desc}
         </p>
-        <Link href="/" className={styles.button}>
+        <Link href={`/posts/${post.slug}`} className={styles.button}>
           Read More
         </Link>
       </div>
