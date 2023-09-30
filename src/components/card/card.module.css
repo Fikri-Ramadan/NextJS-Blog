@@ -34,6 +34,7 @@
   font-weight: 500;
   color: crimson;
   margin-left: 5px;
+  text-transform: capitalize;
 }
 
 .title {
@@ -55,15 +56,5 @@
 @media screen and (max-width: 1024px) {
   .imageContainer {
     display: none;
-  }
-
-  .post {
-    height: 300px;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .post {
-    height: 350px;
   }
 }

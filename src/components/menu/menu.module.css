@@ -3,6 +3,15 @@
   margin-top: 60px;
 }
 
+.subtitle {
+  font-size: 14px;
+  color: grey;
+}
+
+.title {
+  font-size: 28px;
+}
+
 @media screen and (max-width: 768px) {
   .container {
     display: none;

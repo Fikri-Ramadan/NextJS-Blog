@@ -19,11 +19,15 @@ const Card = ({ post }) => {
         <h1 className={styles.title}>
           <Link href={`/posts/${post.slug}`}>{post.title}</Link>
         </h1>
-        <p className={styles.desc}>
-          {post.desc.length > 100
-            ? post.desc.substring(0, 100) + '...'
-            : post.desc}
-        </p>
+        <p
+          className={styles.desc}
+          dangerouslySetInnerHTML={{
+            __html:
+              post.desc.length > 200
+                ? post.desc.substring(0, 200) + '...'
+                : post.desc,
+          }}
+        />
         <Link href={`/posts/${post.slug}`} className={styles.button}>
           Read More
         </Link>

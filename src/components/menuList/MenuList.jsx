@@ -1,75 +1,71 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './menuList.module.css';
+import axios from 'axios';
 
-const MenuList = ({ withImage = false }) => {
+const getMostPopular = async () => {
+  try {
+    const { data } = await axios.get('http://localhost:3000/api/posts/popular');
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const getEditorPick = async () => {
+  try {
+    const { data } = await axios.get('http://localhost:3000/api/posts/editor');
+    return data;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+const MenuList = async ({ mostPopular, editorPick }) => {
+  let posts;
+
+  if (mostPopular) {
+    posts = await getMostPopular();
+  }
+
+  if (editorPick) {
+    posts = await getEditorPick();
+  }
+
   return (
     <>
-      <h2 className={styles.subtitle}>Chosen by editor</h2>
-      <h1 className={styles.title}>Editor Picks</h1>
       <div className={styles.items}>
-        <div className={styles.item}>
-          {withImage && (
-            <div className={styles.imageContainer}>
-              <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+        {posts.map((post) => {
+          return (
+            <div className={styles.item} key={post.slug}>
+              {post.image && (
+                <div className={styles.imageContainer}>
+                  <Image
+                    src={post.image}
+                    alt=""
+                    fill
+                    className={styles.image}
+                  />
+                </div>
+              )}
+              <div className={styles.textContainer}>
+                <div className={`${styles.category} ${styles[post.catSlug]}`}>
+                  {post.catSlug}
+                </div>
+                <Link href={`/posts/${post.slug}`}>
+                  <h3 className={styles.postTitle}>{post.title}</h3>
+                </Link>
+                <div className={styles.detail}>
+                  <span className={styles.username}>{post.user.name}</span>
+                  <span> - </span>
+                  <span className={styles.date}>
+                    {post.createdAt.substring(0, 10)}
+                  </span>
+                </div>
+              </div>
             </div>
-          )}
-          <div className={styles.textContainer}>
-            <div className={`${styles.category} ${styles.food}`}>food</div>
-            <Link href="/">
-              <h3 className={styles.postTitle}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </h3>
-            </Link>
-            <div className={styles.detail}>
-              <span className={styles.username}>John Cena</span>
-              <span> - </span>
-              <span className={styles.date}>11.03.23</span>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.item}>
-          {withImage && (
-            <div className={styles.imageContainer}>
-              <Image src="/p1.jpeg" alt="" fill className={styles.image} />
-            </div>
-          )}
-          <div className={styles.textContainer}>
-            <div className={`${styles.category} ${styles.travel}`}>travel</div>
-            <Link href="/">
-              <h3 className={styles.postTitle}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </h3>
-            </Link>
-            <div className={styles.detail}>
-              <span className={styles.username}>John Cena</span>
-              <span> - </span>
-              <span className={styles.date}>11.03.23</span>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.item}>
-          {withImage && (
-            <div className={styles.imageContainer}>
-              <Image src="/p1.jpeg" alt="" fill className={styles.image} />
-            </div>
-          )}
-          <div className={styles.textContainer}>
-            <div className={`${styles.category} ${styles.style}`}>style</div>
-            <Link href="/">
-              <h3 className={styles.postTitle}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </h3>
-            </Link>
-            <div className={styles.detail}>
-              <span className={styles.username}>John Cena</span>
-              <span> - </span>
-              <span className={styles.date}>11.03.23</span>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </>
   );

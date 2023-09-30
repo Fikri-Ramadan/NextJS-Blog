@@ -1,29 +1,30 @@
-import Link from "next/link";
+import Link from 'next/link';
 import styles from './menuCategories.module.css';
 
 const MenuCategories = () => {
   return (
     <>
-      <h2 className={styles.subtitle}>Dicover by topic</h2>
-      <h1 className={styles.title}>Categories</h1>
       <div className={styles.categories}>
-        <Link href="/" className={`${styles.link} ${styles.style}`}>
-          style
+        <Link
+          href="/blog?cat=backend"
+          className={`${styles.link} ${styles.backend}`}
+        >
+          backend
         </Link>
-        <Link href="/" className={`${styles.link} ${styles.fashion}`}>
-          fashion
+        <Link href="/blog?cat=frontend" className={`${styles.link} ${styles.frontend}`}>
+          frontend
         </Link>
-        <Link href="/" className={`${styles.link} ${styles.food}`}>
-          food
+        <Link href="/blog?cat=devops" className={`${styles.link} ${styles.devops}`}>
+          devops
         </Link>
-        <Link href="/" className={`${styles.link} ${styles.travel}`}>
-          travel
+        <Link href="/blog?cat=fullstack" className={`${styles.link} ${styles.fullstack}`}>
+          fullstack
         </Link>
-        <Link href="/" className={`${styles.link} ${styles.culture}`}>
-          culture
+        <Link href="/blog?cat=uiux" className={`${styles.link} ${styles.uiux}`}>
+          uiux
         </Link>
-        <Link href="/" className={`${styles.link} ${styles.coding}`}>
-          coding
+        <Link href="/blog?cat=other" className={`${styles.link} ${styles.other}`}>
+          other
         </Link>
       </div>
     </>

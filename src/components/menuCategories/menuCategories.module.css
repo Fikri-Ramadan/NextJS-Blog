@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .link {
@@ -15,26 +15,26 @@
   text-transform: capitalize;
 }
 
-.link.style {
+.link.backend {
   background-color: #57c4ff31;
 }
 
-.link.fashion {
+.link.frontend {
   background-color: #da85c731;
 }
 
-.link.food {
+.link.devops {
   background-color: #7fb88133;
 }
 
-.link.travel {
+.link.fullstack {
   background-color: #ff795736;
 }
 
-.link.culture {
+.link.uiux {
   background-color: #ffb04f45;
 }
 
-.link.coding {
+.link.other {
   background-color: #5e4fff31;
 }
