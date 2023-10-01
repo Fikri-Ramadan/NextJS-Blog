@@ -1,11 +1,11 @@
-import axios from 'axios';
+import customFetch from '@/utils/customFetch';
 import Card from '../card/Card';
 import Pagination from '../pagination/Pagination';
 import styles from './cardList.module.css';
 
 const getPosts = async (page, cat) => {
-  const res = await axios.get(
-    `http://localhost:3000/api/posts?page=${page}&cat=${cat}`
+  const res = await customFetch.get(
+    `/api/posts?page=${page}&cat=${cat}`
   );
   return res.data;
 };

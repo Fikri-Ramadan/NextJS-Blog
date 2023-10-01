@@ -1,11 +1,11 @@
 import Image from 'next/image';
-import styled from './featured.module.css';
+import styles from './featured.module.css';
 import Link from 'next/link';
-import axios from 'axios';
+import customFetch from '@/utils/customFetch';
 
 const getPopularPost = async () => {
   try {
-    const { data } = await axios.get('http://localhost:3000/api/posts/popular');
+    const { data } = await customFetch.get('/api/posts/trending');
     return data;
   } catch (error) {
     throw new Error(error.message);
@@ -13,29 +13,31 @@ const getPopularPost = async () => {
 };
 
 const Featured = async () => {
-  const posts = await getPopularPost();
-  const post = posts[0];
+  const { populars } = await getPopularPost();
+  const post = populars[0];
 
   return (
-    <div className={styled.container}>
-      <h1 className={styled.title}>
+    <div className={styles.container}>
+      <h1 className={styles.title}>
         <b>Hello, everyone!</b> Discover your innovation and creative ideas.
       </h1>
-      <div className={styled.post}>
+      <div className={styles.post}>
         {post.image && (
-          <div className={styled.imageContainer}>
+          <div className={styles.imageContainer}>
             <Image
               src="/p1.jpeg"
               alt="main image"
               fill
-              className={styled.image}
+              className={styles.image}
             />
           </div>
         )}
-        <div className={styled.postInfo}>
-          <div className={styled.postTitle}>{post.title}</div>
+        <div className={styles.postInfo}>
+          <div className={styles.postTitle}>
+            <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+          </div>
           <div
-            className={styled.postDesc}
+            className={styles.postDesc}
             dangerouslySetInnerHTML={{
               __html:
                 post.desc.length > 300
@@ -43,7 +45,9 @@ const Featured = async () => {
                   : post.desc,
             }}
           />
-          <button className={styled.button}>Read More</button>
+          <Link href={`/posts/${post.slug}`}>
+            <button className={styles.button}>Read More</button>
+          </Link>
         </div>
       </div>
     </div>

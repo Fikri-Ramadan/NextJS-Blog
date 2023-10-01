@@ -1,6 +1,5 @@
 'use client';
 
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 import { useState, useEffect } from 'react';
 import styles from './writePage.module.css';
@@ -14,11 +13,14 @@ import {
   getDownloadURL,
 } from 'firebase/storage';
 import { app } from '@/utils/firebase';
-import axios from 'axios';
+import customFetch from '@/utils/customFetch';
+import dynamic from 'next/dynamic';
 
 const storage = getStorage(app);
 
 const WritePage = () => {
+  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
+
   const { status } = useSession();
   const router = useRouter();
 
@@ -28,8 +30,20 @@ const WritePage = () => {
   const [value, setValue] = useState('');
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState('');
+  const [categories, setCategories] = useState('');
 
   useEffect(() => {
+    // GET ALL CATEGORIES
+    const getAllCategories = async () => {
+      const { data } = await customFetch.get('/api/categories');
+      return data;
+    };
+
+    getAllCategories().then((data) => {
+      setCategories(data);
+    });
+
+    // For upload image to FIREBASE
     const upload = () => {
       const customFile = new Date().getTime + file.name;
 
@@ -82,10 +96,10 @@ const WritePage = () => {
   };
 
   const submitHandler = async () => {
-    const res = await axios.post('http://localhost:3000/api/posts', {
+    const res = await customFetch.post('/api/posts', {
       title: title,
       desc: value,
-      catSlug: catSlug || 'coding',
+      catSlug: catSlug || 'other',
       slug: slugify(title),
       image: media,
     });
@@ -112,18 +126,26 @@ const WritePage = () => {
         <div className={styles.action}>
           <select
             className={styles.select}
-            defaultValue={'none'}
+            defaultValue={'other'}
             onChange={(e) => setCatSlug(e.target.value)}
           >
-            <option value="none" disabled hidden>
+            <option value="other" className={styles.option} disabled hidden>
               Select an Category
             </option>
-            <option value="fashion">Fashion</option>
-            <option value="style">Style</option>
-            <option value="food">Food</option>
-            <option value="travel">Travel</option>
-            <option value="culture">Culture</option>
-            <option value="coding">Coding</option>
+            {categories &&
+              categories.map((category) => {
+                return (
+                  <>
+                    <option
+                      value={category.slug}
+                      key={category.slug}
+                      className={styles.option}
+                    >
+                      {category.slug}
+                    </option>
+                  </>
+                );
+              })}
           </select>
           <button className={styles.button} onClick={() => setOpen(!isOpen)}>
             <Image src="/plus.png" alt="" width={16} height={16} />

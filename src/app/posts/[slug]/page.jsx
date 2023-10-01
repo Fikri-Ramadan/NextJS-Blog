@@ -2,11 +2,11 @@ import Image from 'next/image';
 import styles from './singlePage.module.css';
 import Menu from '@/components/menu/Menu';
 import Comment from '@/components/comment/Comment';
-import axios from 'axios';
+import customFetch from '@/utils/customFetch';
 
 const getSinglePage = async (slug) => {
   try {
-    const res = await axios.get(`http://localhost:3000/api/posts/${slug}`);
+    const res = await customFetch.get(`/api/posts/${slug}`);
     return res.data;
   } catch (error) {
     throw new Error(error);

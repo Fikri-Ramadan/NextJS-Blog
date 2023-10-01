@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import styles from './categoryList.module.css';
 import Image from 'next/image';
-import axios from 'axios';
+import customFetch from '@/utils/customFetch';
 
 const getCategories = async () => {
   try {
-    const res = await axios.get('http://localhost:3000/api/categories');
+    const res = await customFetch.get('/api/categories');
     return res.data;
   } catch (error) {
     throw new Error('Failed');

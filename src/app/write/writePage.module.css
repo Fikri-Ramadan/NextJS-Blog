@@ -43,6 +43,11 @@
   background-color: transparent;
   color: #919189;
   font-family: inherit;
+  text-transform: capitalize;
+}
+
+.option {
+  text-transform: capitalize;
 }
 
 .label {

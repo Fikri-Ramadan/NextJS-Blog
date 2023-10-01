@@ -9,7 +9,7 @@ const Footer = () => {
         <div className={styles.profileContainer}>
           <div className={styles.imageContainer}>
             <Image
-              src="/logo.png"
+              src="/favicon.png"
               alt=""
               width={32}
               height={32}
@@ -19,10 +19,13 @@ const Footer = () => {
           <div className={styles.title}>Tech Talk</div>
         </div>
         <div className={styles.desc}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum
-          perspiciatis esse ratione totam exercitationem tenetur dicta
-          laboriosam, iusto eveniet minima reiciendis optio quos ducimus maiores
-          vero aliquam doloremque deleniti veniam.
+          <span className={styles.webTitle}>Tech Info</span>, your go-to
+          destination for all things tech-related! Our mission is to keep you
+          informed, inspired, and engaged in the ever-evolving world of
+          technology. Whether you&apos;re a tech enthusiast, a curious novice, or
+          a seasoned professional,{' '}
+          <span className={styles.webTitle}>Tech Info</span> offers a diverse
+          range of articles, tutorials, and insights to cater to your interests.
         </div>
         <div className={styles.social}>
           <Image src="/facebook.png" alt="" width={18} height={18} />

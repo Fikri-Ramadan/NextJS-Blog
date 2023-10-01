@@ -27,10 +27,11 @@
   flex: 4;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 3px;
 }
 
 .category {
+  margin-bottom: 10px;
   font-size: 12px;
   padding: 2px 5px;
   width: max-content;

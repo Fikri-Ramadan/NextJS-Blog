@@ -23,6 +23,10 @@
   color: var(--softTextColor);
 }
 
+.webTitle {
+  color: var(--softTextColor)
+}
+
 .imageContainer {
   position: relative;
 }

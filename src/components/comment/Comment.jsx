@@ -4,13 +4,13 @@ import Image from 'next/image';
 import styles from './comment.module.css';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-import axios from 'axios';
 import useSWR from 'swr';
 import { useState } from 'react';
+import customFetch from '@/utils/customFetch';
 
 const getComments = async (url) => {
   try {
-    const res = await axios.get(url);
+    const res = await customFetch.get(url);
     return res.data;
   } catch (error) {
     throw new Error(error.message);
@@ -22,12 +22,12 @@ const Comment = ({ postSlug }) => {
   const [desc, setDesc] = useState('');
 
   const { data, isLoading, mutate } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    `/api/comments?postSlug=${postSlug}`,
     getComments
   );
 
   const submitHandler = async () => {
-    await axios.post('http://localhost:3000/api/comments', {
+    await customFetch.post('/api/comments', {
       desc,
       postSlug,
     });
