@@ -9,14 +9,14 @@ const Footer = () => {
         <div className={styles.profileContainer}>
           <div className={styles.imageContainer}>
             <Image
-              src="/favicon.png"
+              src="/logo.png"
               alt=""
               width={32}
               height={32}
               className={styles.image}
             />
           </div>
-          <div className={styles.title}>Tech Talk</div>
+          <div className={styles.title}>Tech Info</div>
         </div>
         <div className={styles.desc}>
           <span className={styles.webTitle}>Tech Info</span>, your go-to
