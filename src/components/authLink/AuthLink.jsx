@@ -1,17 +1,21 @@
 'use client';
+import { signOut, useSession } from 'next-auth/react';
+import { useState } from 'react';
 import styles from './authLink.module.css';
 import Link from 'next/link';
-import { useState } from 'react';
 
 const AuthLink = () => {
-  // temporary
-  const [isAuth, setIsAuth] = useState(false);
+  const [isOpen, setOpen] = useState(false);
 
-  const [open, isOpen] = useState(false);
+  const { status } = useSession();
+
+  if (status === 'loading') {
+    return <div className={styles.loading}>Loading...</div>;
+  }
 
   return (
     <>
-      {!isAuth ? (
+      {status === 'unauthenticated' ? (
         <Link href="/login" className={styles.link}>
           Login
         </Link>
@@ -20,25 +24,27 @@ const AuthLink = () => {
           <Link href="/write" className={styles.link}>
             Write
           </Link>
-          <span className={styles.link}>Logout</span>
+          <span className={styles.link} onClick={signOut}>
+            Logout
+          </span>
         </>
       )}
-      <div className={styles.hamburger} onClick={() => isOpen(!open)}>
+      <div className={styles.hamburger} onClick={() => setOpen(!isOpen)}>
         <div className={styles.line}></div>
         <div className={styles.line}></div>
         <div className={styles.line}></div>
       </div>
-      {open && (
-        <div className={styles.responsiveMenu}>
+      {isOpen && (
+        <div className={styles.responsiveMenu} onClick={() => setOpen(!isOpen)}>
           <Link href="/">Homepage</Link>
           <Link href="/contact">Contact</Link>
           <Link href="/about">About</Link>
-          {!isAuth ? (
+          {status === 'unauthenticated' ? (
             <Link href="/login">Login</Link>
           ) : (
             <>
               <Link href="/write">Write</Link>
-              <span>Logout</span>
+              <span onClick={signOut}>Logout</span>
             </>
           )}
         </div>

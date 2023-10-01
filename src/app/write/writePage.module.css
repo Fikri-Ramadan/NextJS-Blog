@@ -1,0 +1,99 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleInput {
+  background-color: transparent;
+  padding: 50px;
+  border: none;
+  outline: none;
+  font-size: 42px;
+  margin-top: 20px;
+  color: var(--textColor);
+}
+
+.titleInput::placeholder {
+  color: #b3b3b1;
+}
+
+.textArea {
+  width: 100%;
+}
+
+.editor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 500px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.select {
+  width: max-content;
+  margin: 10px 0 10px 0;
+  padding: 10px 10px;
+  background-color: transparent;
+  color: #919189;
+  font-family: inherit;
+  text-transform: capitalize;
+}
+
+.option {
+  text-transform: capitalize;
+}
+
+.label {
+  cursor: pointer;
+}
+
+.fileInput {
+  display: none;
+}
+
+.add {
+  position: absolute;
+  top: 10px;
+  left: 240px;
+  display: flex;
+  gap: 20px;
+  z-index: 99;
+  background-color: var(--bg);
+}
+
+.button,
+.addButton {
+  background-color: transparent;
+  border: 1px solid var(--softTextColor);
+  border-radius: 50%;
+  padding: 2px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.addButton {
+  border: 1px solid #1a8917;
+}
+
+.publish {
+  background-color: #1a8917;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}

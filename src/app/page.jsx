@@ -1,18 +1,21 @@
 import styles from './homepage.module.css';
 import Featured from '../components/featured/Featured';
 import CategoryList from '../components/categoryList/CategoryList';
-import Pagination from '../components/pagination/Pagination';
 import CardList from '../components/cardList/CardList';
 import Menu from '../components/menu/Menu';
 
-export default function Home() {
+export default function Home({ searchParams }) {
+  const page = parseInt(searchParams.page) || 1;
+  const cat = searchParams.cat || "";
+  
   return (
-    <div>
+    <div className={styles.container}>
       <Featured />
       <CategoryList />
-      <CardList />
-      <Pagination />
-      <Menu />
+      <div className={styles.content}>
+        <CardList page={page} cat={cat} />
+        <Menu />
+      </div>
     </div>
   );
 }

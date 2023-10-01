@@ -1,0 +1,60 @@
+.post {
+  display: flex;
+  gap: 25px;
+}
+
+.imageContainer {
+  flex: 2;
+  position: relative;
+  height: 300px;
+}
+
+.image {
+  object-fit: cover;
+}
+
+.textContainer {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 25px;
+}
+
+.detail {
+  display: flex;
+}
+
+.date {
+  color: grey;
+  margin-right: 5px;
+}
+
+.category {
+  font-weight: 500;
+  color: crimson;
+  margin-left: 5px;
+  text-transform: capitalize;
+}
+
+.title {
+  font-size: 20px;
+}
+
+.desc {
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--softTextColor);
+}
+
+.button {
+  width: max-content;
+  border-bottom: 1px solid crimson;
+  padding: 2px 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .imageContainer {
+    display: none;
+  }
+}

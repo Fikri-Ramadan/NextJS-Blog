@@ -1,0 +1,90 @@
+.items {
+  margin: 35px 0 60px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.imageContainer {
+  flex: 1;
+  aspect-ratio: 1/1;
+  position: relative;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid lightgrey;
+}
+
+.textContainer {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.category {
+  margin-bottom: 10px;
+  font-size: 12px;
+  padding: 2px 5px;
+  width: max-content;
+  border-radius: 10px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.fullstack {
+  background-color: #ff7857;
+}
+
+.uiux {
+  background-color: #ffb14f;
+}
+
+.devops {
+  background-color: #7fb881;
+}
+
+.frontend {
+  background-color: #ff7887;
+}
+
+.other {
+  background-color: #775aec;
+}
+
+.backend {
+  background-color: #789cff;
+}
+
+.postTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--softTextColor);
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.username, .date {
+  font-size: 12px;
+}
+
+.username {
+  color: var(--textColor);
+  font-weight: 500;
+}
+
+.date {
+  color: grey;
+}

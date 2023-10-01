@@ -1,0 +1,40 @@
+.categories {
+  margin: 35px 0 60px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.link {
+  font-size: 14px;
+  padding: 8px 20px;
+  width: max-content;
+  border-radius: 5px;
+  color: var(--textColor);
+  text-transform: capitalize;
+}
+
+.link.backend {
+  background-color: #57c4ff31;
+}
+
+.link.frontend {
+  background-color: #da85c731;
+}
+
+.link.devops {
+  background-color: #7fb88133;
+}
+
+.link.fullstack {
+  background-color: #ff795736;
+}
+
+.link.uiux {
+  background-color: #ffb04f45;
+}
+
+.link.other {
+  background-color: #5e4fff31;
+}

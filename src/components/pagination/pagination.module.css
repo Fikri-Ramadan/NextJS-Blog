@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  width: 80px;
+  padding: 10px 25px;
+  background-color: crimson;
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: rgba(220, 20, 60, 0.5);
+  cursor: not-allowed;
+}
+
+@media screen and (max-width: 640px) {
+  .button {
+    width: 60px;
+  }
+}
