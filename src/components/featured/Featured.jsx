@@ -25,7 +25,7 @@ const Featured = async () => {
         {post.image && (
           <div className={styles.imageContainer}>
             <Image
-              src="/p1.jpeg"
+              src={post.image}
               alt="main image"
               fill
               className={styles.image}
