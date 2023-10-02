@@ -16,11 +16,10 @@ import { app } from '@/utils/firebase';
 import customFetch from '@/utils/customFetch';
 import dynamic from 'next/dynamic';
 
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 const storage = getStorage(app);
 
 const WritePage = () => {
-  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
   const { status } = useSession();
   const router = useRouter();
 
