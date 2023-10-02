@@ -16,11 +16,10 @@ import { app } from '@/utils/firebase';
 import customFetch from '@/utils/customFetch';
 import dynamic from 'next/dynamic';
 
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 const storage = getStorage(app);
 
 const WritePage = () => {
-  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
-
   const { status } = useSession();
   const router = useRouter();
 
@@ -112,15 +111,15 @@ const WritePage = () => {
 
   return (
     <div className={styles.container}>
-      <input
-        type="text"
+      <textarea
         name="title"
         id="title"
         className={styles.titleInput}
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-      />
+        rows="1"
+      ></textarea>
 
       <div className={styles.editor}>
         <div className={styles.action}>
@@ -158,12 +157,12 @@ const WritePage = () => {
                 <Image src="/image.png" alt="" width={16} height={16} />
               </label>
             </button>
-            <button className={styles.addButton}>
+            {/* <button className={styles.addButton}>
               <Image src="/external.png" alt="" width={16} height={16} />
             </button>
             <button className={styles.addButton}>
               <Image src="/video.png" alt="" width={16} height={16} />
-            </button>
+            </button> */}
             <input
               type="file"
               name="image"

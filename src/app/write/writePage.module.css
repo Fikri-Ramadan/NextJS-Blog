@@ -9,9 +9,12 @@
   padding: 50px;
   border: none;
   outline: none;
-  font-size: 42px;
+  font-family: inherit;
+  font-size: 36px;
   margin-top: 20px;
   color: var(--textColor);
+  resize: vertical;
+  width: 100%;
 }
 
 .titleInput::placeholder {
@@ -73,7 +76,6 @@
   background-color: transparent;
   border: 1px solid var(--softTextColor);
   border-radius: 50%;
-  padding: 2px;
   width: 36px;
   height: 36px;
   display: flex;
@@ -96,4 +98,19 @@
   border-radius: 20px;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .titleInput {
+    font-size: 20px;
+    padding: 50px 0;
+  }
+
+  .select {
+    font-size: 12px;
+  }
+
+  .add {
+    left: 220px;
+  }
 }
