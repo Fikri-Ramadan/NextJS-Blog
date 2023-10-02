@@ -2,7 +2,9 @@ import prisma from '@/utils/connect';
 
 const { NextResponse } = require('next/server');
 
-export const GET = async () => {
+export const GET = async (req) => {
+  new URL(req.url);
+
   try {
     const [populars, byEditors] = await prisma.$transaction([
       prisma.post.findMany({

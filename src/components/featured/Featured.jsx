@@ -41,7 +41,7 @@ const Featured = async () => {
             dangerouslySetInnerHTML={{
               __html:
                 post.desc.length > 300
-                  ? post.desc.substring(0, 300) + '<>...</>'
+                  ? post.desc.substring(0, 300) + '<span>...</span>'
                   : post.desc,
             }}
           />
