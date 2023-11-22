@@ -2,7 +2,6 @@
   width: 100%;
   font-weight: bold;
   text-align: center;
-  color: white;
   padding: 10px 0;
   font-size: 24px;
   text-transform: capitalize;
@@ -13,26 +12,26 @@
   gap: 20px;
 }
 
-.travel {
-  background-color: #ff7857;
+.backend {
+  background-color: #57c4ff31;
 }
 
-.culture {
-  background-color: #ffb14f;
+.frontend {
+  background-color: #da85c731;
 }
 
-.food {
-  background-color: #7fb881;
+.devops {
+  background-color: #7fb88133;
 }
 
-.fashion {
-  background-color: #ff7887;
+.fullstack {
+  background-color: #ff795736;
 }
 
-.coding {
-  background-color: #775aec;
+.uiux {
+  background-color: #ffb04f45;
 }
 
-.style {
-  background-color: #789cff;
+.other {
+  background-color: #5e4fff31;
 }
