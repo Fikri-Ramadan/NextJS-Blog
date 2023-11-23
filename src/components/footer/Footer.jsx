@@ -22,16 +22,18 @@ const Footer = () => {
           <span className={styles.webTitle}>Tech Info</span>, your go-to
           destination for all things tech-related! Our mission is to keep you
           informed, inspired, and engaged in the ever-evolving world of
-          technology. Whether you&apos;re a tech enthusiast, a curious novice, or
-          a seasoned professional,{' '}
+          technology. Whether you&apos;re a tech enthusiast, a curious novice,
+          or a seasoned professional,{' '}
           <span className={styles.webTitle}>Tech Info</span> offers a diverse
           range of articles, tutorials, and insights to cater to your interests.
         </div>
         <div className={styles.social}>
-          <Image src="/facebook.png" alt="" width={18} height={18} />
-          <Image src="/instagram.png" alt="" width={18} height={18} />
-          <Image src="/tiktok.png" alt="" width={18} height={18} />
-          <Image src="/youtube.png" alt="" width={18} height={18} />
+          <Link href="https://www.instagram.com/_fikri_ramadan_">
+            <Image src="/instagram.png" alt="" width={18} height={18} />
+          </Link>
+          <Link href="https://www.github.com/Fikri-Ramadan">
+            <Image src="/github.png" alt="" width={18} height={18} />
+          </Link>
         </div>
       </div>
 
@@ -41,44 +43,41 @@ const Footer = () => {
           <Link href="/" className={styles.link}>
             Homepage
           </Link>
-          <Link href="/" className={styles.link}>
+          <Link href="#post" className={styles.link}>
             Blog
           </Link>
-          <Link href="/" className={styles.link}>
-            About
-          </Link>
-          <Link href="/" className={styles.link}>
+          <Link href="mailto:fikrinr.tech@gmail.com" className={styles.link}>
             Contact
           </Link>
         </div>
         <div className={styles.links}>
           <div className={styles.linkTitle}>Tags</div>
-          <Link href="/" className={styles.link}>
-            Style
+          <Link href="/blog?cat=backend" className={styles.link}>
+            backend
           </Link>
-          <Link href="/" className={styles.link}>
-            Fashion
+          <Link href="/blog?cat=frontend" className={styles.link}>
+            frontend
           </Link>
-          <Link href="/" className={styles.link}>
-            Coding
+          <Link href="/blog?cat=fullstack" className={styles.link}>
+            fullstack
           </Link>
-          <Link href="/" className={styles.link}>
-            Travel
+          <Link href="/blog?cat=devops" className={styles.link}>
+            devops
           </Link>
         </div>
         <div className={styles.links}>
           <div className={styles.linkTitle}>Socials</div>
-          <Link href="/" className={styles.link}>
-            Facebook
-          </Link>
-          <Link href="/" className={styles.link}>
+          <Link
+            href="https://www.instagram.com/_fikri_ramadan_"
+            className={styles.link}
+          >
             Instagram
           </Link>
-          <Link href="/" className={styles.link}>
-            Tiktok
-          </Link>
-          <Link href="/" className={styles.link}>
-            Youtube
+          <Link
+            href="https://www.github.com/Fikri-Ramadan"
+            className={styles.link}
+          >
+            Github
           </Link>
         </div>
       </div>
